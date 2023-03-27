@@ -1,8 +1,8 @@
 import React, { useState, useEffect} from "react";
 import axios from 'axios';
-
+import styled from "styled-components";
 import "./App.css";
-
+import Button from "./Components/Button";
 import NasaPhoto from './Components/NasaPhoto';
 
 const dummyData = {
@@ -12,6 +12,10 @@ const dummyData = {
   title:"Wolf-Rayet 124"
 }
 
+
+const WrapperDiv = styled.div`
+font-family: arial;
+text-align: center;`
 
 function App() {
   const [data, setData] = useState(dummyData);
@@ -24,9 +28,10 @@ function App() {
     .catch(err => console.error(err))
   }, [])
   return (
-    <div className="App">
+    <WrapperDiv className="App">
      { data && <NasaPhoto photo={data} /> }
-    </div>
+     <Button type='primary'>Primary</Button>
+    </WrapperDiv>
   );
 }
 
